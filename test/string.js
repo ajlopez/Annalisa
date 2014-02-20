@@ -18,3 +18,14 @@ exports['match exact word'] = function (test) {
     test.equal(Object.keys(result).length, 1);
     test.equal(result.type, 'bar');
 }
+
+exports['match upper case word'] = function (test) {
+    anna.define('foo', { type: 'bar' });
+    var result = anna.analyze('FOO');
+    
+    test.ok(result);
+    test.ok(typeof result == 'object');
+    test.equal(Object.keys(result).length, 1);
+    test.equal(result.type, 'bar');
+}
+
