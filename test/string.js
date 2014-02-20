@@ -39,3 +39,12 @@ exports['match mixed case word'] = function (test) {
     test.equal(result.type, 'bar');
 }
 
+exports['match upper case key'] = function (test) {
+    anna.define('FOO', { type: 'bar' });
+    var result = anna.analyze('foo');
+    
+    test.ok(result);
+    test.ok(typeof result == 'object');
+    test.equal(Object.keys(result).length, 1);
+    test.equal(result.type, 'bar');
+}
