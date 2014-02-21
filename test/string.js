@@ -48,3 +48,4 @@ exports['match upper case key'] = function (test) {
     test.equal(Object.keys(result).length, 1);
     test.equal(result.type, 'bar');
 }
+
