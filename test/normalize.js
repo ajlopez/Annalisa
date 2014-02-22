@@ -18,3 +18,9 @@ exports['normalize mixed case word'] = function (test) {
     test.ok(result);
     test.equal(result, 'foo');
 };
+
+exports['normalize removing initial spaces'] = function (test) {
+    var result = normalize('  Foo');
+    test.ok(result);
+    test.equal(result, 'foo');
+};
