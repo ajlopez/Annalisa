@@ -49,3 +49,23 @@ exports['match upper case key'] = function (test) {
     test.equal(result.type, 'bar');
 }
 
+exports['match key with spaces and tabs'] = function (test) {
+    anna.define(' \t FOO   ', { type: 'bar' });
+    var result = anna.analyze('foo');
+    
+    test.ok(result);
+    test.ok(typeof result == 'object');
+    test.equal(Object.keys(result).length, 1);
+    test.equal(result.type, 'bar');
+}
+
+exports['match word with spaces and tabs'] = function (test) {
+    anna.define('foo', { type: 'bar' });
+    var result = anna.analyze('   \t\t foo   ');
+    
+    test.ok(result);
+    test.ok(typeof result == 'object');
+    test.equal(Object.keys(result).length, 1);
+    test.equal(result.type, 'bar');
+}
+
