@@ -30,3 +30,15 @@ exports['normalize removing initial spaces and tabs'] = function (test) {
     test.ok(result);
     test.equal(result, 'foo');
 };
+
+exports['normalize removing final spaces'] = function (test) {
+    var result = normalize('Foo   ');
+    test.ok(result);
+    test.equal(result, 'foo');
+};
+
+exports['normalize removing final spaces and tabs'] = function (test) {
+    var result = normalize('Foo  \t\t   ');
+    test.ok(result);
+    test.equal(result, 'foo');
+};
