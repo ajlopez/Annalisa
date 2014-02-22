@@ -24,3 +24,9 @@ exports['normalize removing initial spaces'] = function (test) {
     test.ok(result);
     test.equal(result, 'foo');
 };
+
+exports['normalize removing initial spaces and tabs'] = function (test) {
+    var result = normalize('  \t\t   Foo');
+    test.ok(result);
+    test.equal(result, 'foo');
+};
