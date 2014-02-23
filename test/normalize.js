@@ -1,4 +1,4 @@
-
+﻿
 var normalize = require('../lib/normalize');
 
 exports['normalize simple lower case word'] = function (test) {
@@ -41,4 +41,16 @@ exports['normalize removing final spaces and tabs'] = function (test) {
     var result = normalize('Foo  \t\t   ');
     test.ok(result);
     test.equal(result, 'foo');
+};
+
+exports['normalize Spanish special letters'] = function (test) {
+    var result = normalize('áéíóúñÑü');
+    test.ok(result);
+    test.equal(result, 'aeiounnu');
+};
+
+exports['normalize multiple spaces'] = function (test) {
+    var result = normalize('  foo    bar   ');
+    test.ok(result);
+    test.equal(result, 'foo bar');
 };

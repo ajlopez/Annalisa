@@ -1,4 +1,4 @@
-
+﻿
 var anna = require('..');
 
 exports['no result'] = function (test) {
