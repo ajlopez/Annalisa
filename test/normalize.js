@@ -54,3 +54,11 @@ exports['normalize multiple spaces'] = function (test) {
     test.ok(result);
     test.equal(result, 'foo bar');
 };
+
+exports['discard words'] = function (test) {
+    normalize.discard('the');
+    normalize.discard('  OF ');
+    test.equal(normalize('the dog'), 'dog');;
+    test.equal(normalize('house of cards'), 'house cards');;
+    test.equal(normalize('house of of of the cards the'), 'house cards');;
+};
