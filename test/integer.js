@@ -37,3 +37,13 @@ exports['get temperature'] = function (test) {
     test.ok(areEqual(anna.analyze('Buenos Aires 42c'), { temperature: 42, scale: 'Celsius' }));
     test.ok(areEqual(anna.analyze('Helium at 0F'), { temperature: 0, scale: 'Farenheit' }));
 }
+
+exports['get integer after match'] = function (test) {
+    anna.define(['players', anna.Integer], { players: '${Integer}' });
+    anna.define(['boards', anna.Integer], { boards: '${Integer}' });
+    
+    test.ok(areEqual(anna.analyze('foo'), { }));
+    test.ok(areEqual(anna.analyze('Players 10'), { players: 10 }));
+    test.ok(areEqual(anna.analyze('Boards 2'), { boards: 2 }));
+    test.ok(areEqual(anna.analyze('Players 42 Boards 3'), { players: 42, boards: 3 }));
+}
