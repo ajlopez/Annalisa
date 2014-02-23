@@ -42,3 +42,13 @@ exports['get integer in phrase'] = function (test) {
     test.equal(result.length, 1);
     test.ok(areEqual(result[0], { value: 42, length: 2, position: 7 }));
 };
+
+exports['get integers'] = function (test) {
+    var result = integers('3 bedrooms, 42 square meters');
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.equal(result.length, 2);
+    test.ok(areEqual(result[0], { value: 3, length: 1, position: 0 }));
+    test.ok(areEqual(result[1], { value: 42, length: 2, position: 12 }));
+};
+
