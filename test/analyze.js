@@ -14,8 +14,54 @@ function areEqual(obj1, obj2) {
 
 exports['analyze cheese'] = function (test) {
     var data = { category: 'dairy', type: 'cheese' };
-    anna.define('cheese', { category: 'dairy', type: 'cheese' });
+    anna.define('cheese', data);
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Blue Cheese'), data));
     test.ok(areEqual(anna.analyze('Cheese 800gr'), data));
+}
+
+exports['analyze Spanish brand'] = function (test) {
+    var data = { brand: 'La Serenísima' };
+    anna.define('La Serenísima', data);
+    test.ok(areEqual(anna.analyze('foo'), { }));
+    test.ok(areEqual(anna.analyze('Queso La Serenísima'), data));
+    test.ok(areEqual(anna.analyze('Leche La Serenísima'), data));
+    test.ok(areEqual(anna.analyze('Queso la serenisima'), data));
+    test.ok(areEqual(anna.analyze('Leche LA serenisima'), data));
+}
+
+exports['analyze Spanish brand with discarded words'] = function (test) {
+    anna.discard('la');
+    anna.discard('el');
+    anna.discard('los');
+    anna.discard('la');
+    anna.discard('de');
+    
+    var data = { brand: 'La Serenísima' };
+    anna.define('La Serenísima', data);
+    test.ok(areEqual(anna.analyze('foo'), { }));
+    test.ok(areEqual(anna.analyze('Queso La Serenísima'), data));
+    test.ok(areEqual(anna.analyze('Leche La Serenísima'), data));
+    test.ok(areEqual(anna.analyze('Queso la serenisima'), data));
+    test.ok(areEqual(anna.analyze('Leche LA serenisima'), data));
+    test.ok(areEqual(anna.analyze('Serenísima queso'), data));
+    test.ok(areEqual(anna.analyze('Serenísima leche'), data));
+    test.ok(areEqual(anna.analyze('Yogurt serenisima'), data));
+    test.ok(areEqual(anna.analyze('Leche serenisima'), data));
+}
+
+exports['analyze Spanish brand with discaded words in array'] = function (test) {
+    anna.discard(['el', 'los', 'la', 'de']);
+    
+    var data = { brand: 'La Serenísima' };
+    anna.define('La Serenísima', data);
+    test.ok(areEqual(anna.analyze('foo'), { }));
+    test.ok(areEqual(anna.analyze('Queso La El Los DE Serenísima'), data));
+    test.ok(areEqual(anna.analyze('Leche DE La Serenísima'), data));
+    test.ok(areEqual(anna.analyze('Queso la serenisima'), data));
+    test.ok(areEqual(anna.analyze('Leche LA serenisima'), data));
+    test.ok(areEqual(anna.analyze('Serenísima queso'), data));
+    test.ok(areEqual(anna.analyze('Serenísima leche'), data));
+    test.ok(areEqual(anna.analyze('Yogurt serenisima'), data));
+    test.ok(areEqual(anna.analyze('Leche serenisima'), data));
 }
