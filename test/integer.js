@@ -28,3 +28,12 @@ exports['get bedrooms and bathrooms'] = function (test) {
     test.ok(areEqual(anna.analyze('1 bedroom, 1 bathroom'), { bedrooms: 1, bathrooms: 1 }));
     test.ok(areEqual(anna.analyze('2 bedrooms, 3 bathrooms'), { bedrooms: 2, bathrooms: 3 }));
 }
+
+exports['get temperature'] = function (test) {
+    anna.define([anna.Integer, 'C'], { temperature: '${Integer}', scale: 'Celsius' });
+    anna.define([anna.Integer, 'F'], { temperature: '${Integer}', scale: 'Farenheit' });
+    
+    test.ok(areEqual(anna.analyze('foo'), { }));
+    test.ok(areEqual(anna.analyze('Buenos Aires 42c'), { temperature: 42, scale: 'Celsius' }));
+    test.ok(areEqual(anna.analyze('Helium at 0F'), { temperature: 0, scale: 'Farenheit' }));
+}
