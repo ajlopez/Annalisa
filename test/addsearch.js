@@ -69,3 +69,18 @@ exports['add and retrieve items by many words'] = function (test) {
     
     test.ok(contains(result, { value: 'Ford Taunus' }));
 };
+
+exports['add and retrieve items by word in properties'] = function (test) {
+    anna.clear();
+    anna.add('Ford model T', { color: 'black' });
+    anna.add('Ford Taunus', { color: 'any' });
+    anna.add('Citroen', { color: 'old' });
+    
+    var result = anna.search('black');
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.equal(result.length, 1);
+    
+    test.ok(contains(result, { value: 'Ford model T' }));
+};
