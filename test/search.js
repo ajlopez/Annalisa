@@ -93,3 +93,18 @@ exports['add and retrieve item with associated data'] = function (test) {
     test.ok(result[0].data);
     test.ok(hasValues(result[0].data, { color: 'black' }));
 };
+
+exports['add and retrieve item using associated data'] = function (test) {
+    items.clear();
+    items.add('Ford model T', { color: 'black' });
+    items.add('Ford Taunus', { color: 'blue' });
+    items.add('Ford Torino', { color: 'blue' });
+    
+    var result = items.search('blue');
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.equal(result.length, 2);
+    test.ok(contains(result, { value: 'Ford Taunus' }));
+    test.ok(contains(result, { value: 'Ford Torino' }));
+};
