@@ -6,6 +6,7 @@ var fabricantes = [];
 
 function initialize() {
     anna.clear();
+    anna.discard(require('./discard.json'));
 }
 
 function loadMarcasFabricantes() {
@@ -27,6 +28,14 @@ function addFabricante(row) {
     };
     
     fabricantes[item.id] = item;
+
+    var item2 = {
+        id: row.pk,
+        logo: row.fields.logo,
+        tipo: 'fabricante'
+    };
+
+    anna.add(item.nombre, item2);
 }
 
 function addMarca(row) {
@@ -37,11 +46,20 @@ function addMarca(row) {
     };
     
     marcas[item.id] = item;
+    
+    var item2 = {
+        id: row.pk,
+        fabricanteid: row.fields.fabricante,
+        tipo: 'marca'
+    };
+    
+    anna.add(item.nombre, item2);
 }
 
 module.exports = {
     initialize: initialize,
     loadMarcasFabricantes: loadMarcasFabricantes,
+    search: anna.search,
     getFabricante: function (id) { return fabricantes[id]; },
     getMarca: function (id) { return marcas[id]; }
 }
