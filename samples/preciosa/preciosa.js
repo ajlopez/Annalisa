@@ -57,6 +57,16 @@ function addMarca(row) {
     };
     
     anna.add(item.nombre, item2);
+    
+    var associtem = { marca: item.nombre, marcaid: item.id };
+    
+    if (item.fabricanteid)
+        associtem.fabricanteid = item.fabricanteid;
+        
+    if (item.fabricanteid && fabricantes[item.fabricanteid])
+        associtem.fabricante = fabricantes[item.fabricanteid].nombre;
+    
+    anna.define(item.nombre, associtem);
 }
 
 function loadCategorias() {
