@@ -8,6 +8,12 @@ var categorias = [];
 function initialize() {
     anna.clear();
     anna.discard(require('./discard.json'));
+    
+    var reglas = require('./reglas.json');
+
+    reglas.forEach(function (regla) {
+        anna.define(regla.dato, regla.produce);
+    });
 }
 
 function loadMarcasFabricantes() {
