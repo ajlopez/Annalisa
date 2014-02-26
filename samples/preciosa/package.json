@@ -1,0 +1,13 @@
+{ "name": "preciosa-annalisa",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Preciosa use cases using Annalisa",
+  "scripts": {
+    "test": "simpleunit test"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "simpleunit": "0.0.2"
+  }
+}
