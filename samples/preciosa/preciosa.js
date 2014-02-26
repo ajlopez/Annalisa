@@ -4,6 +4,7 @@ var anna = require('../..');
 var marcas = [];
 var fabricantes = [];
 var categorias = [];
+var productos = [];
 
 function initialize() {
     anna.clear();
@@ -132,14 +133,70 @@ function defineCategoria(nombre, item) {
     anna.define(ncategoria, { categoria: item.nombre, categoriaid: item.id });
 };
 
+function loadProductos() {
+    var data = require('./fixtures/productos.json');
+    
+    data.forEach(function (row) {
+        if (row.model == 'precios.producto')
+            addProducto(row);
+    });
+}
+
+function addProducto(row) {
+    var item = anna.analyze(row.fields.descripcion);
+
+    item.id = row.pk;
+    item.nombre = row.fields.descripcion;
+    
+    if (row.fields.upc)
+        item.upc = row.fields.upc;
+    if (row.fields.notas)
+        item.notas = row.fields.notas;
+
+    if (row.fields.categoria) {
+        var cat = categorias[row.fields.categoria];
+        
+        if (cat) {
+            item.categoria = cat.nombre;
+            item.categoriaid = cat.id;
+        }
+    }
+
+    if (row.fields.marca) {
+        var mar = marcas[row.fields.marca];
+        
+        if (mar) {
+            item.marca = mar.nombre;
+            item.marcaid = mar.id;
+            
+            if (mar.fabricante) {
+                item.fabricante = mar.fabricante;
+                item.fabricanteid = mar.fabricanteid;
+            }
+        }
+    }
+    
+    productos[item.id] = item;
+    
+    var item2 = { };
+    
+    for (var n in item)
+        if (n != 'nombre')
+            item2[n] = item[n];
+    
+    anna.add(item.nombre, item2);
+}
+
 module.exports = {
     initialize: initialize,
     loadMarcasFabricantes: loadMarcasFabricantes,
     loadCategorias: loadCategorias,
+    loadProductos: loadProductos,
     search: anna.search,
     analyze: anna.analyze,
     getFabricante: function (id) { return fabricantes[id]; },
     getMarca: function (id) { return marcas[id]; },
-    getCategoria: function (id) { return categorias[id]; }
+    getCategoria: function (id) { return categorias[id]; },
+    getProducto: function (id) { return productos[id]; }
 }
 
