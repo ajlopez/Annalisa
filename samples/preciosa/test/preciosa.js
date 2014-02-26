@@ -27,4 +27,4 @@ exports['Retrieve company'] = function (test) {
     test.ok(Array.isArray(result));
     test.ok(result.length);
 };
-
+exports['Retrieve brand'] = function (test) {    var result = preciosa.search('fanta');        test.ok(result);    test.ok(Array.isArray(result));    test.ok(result.length);};
