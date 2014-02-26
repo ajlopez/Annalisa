@@ -15,6 +15,7 @@ anna.define([anna.Integer, 'kg'], { peso: '${Integer}', unidad: 'kilogramo' });
 
 var categorias = require('./categorias.json');
 var productos = require('./productos.json');
+var reglas = require('./reglas.json');
 
 categorias.forEach(function (categoria) {
     defineCategoria(categoria);
@@ -50,6 +51,10 @@ function defineCategoria(categoria) {
         
     anna.define(ncategoria, { categoria: categoria });
 };
+
+reglas.forEach(function (regla) {
+    anna.define(regla.dato, regla.produce);
+});
 
 productos.forEach(function (producto) {
     console.log(producto);

@@ -1,0 +1,21 @@
+[
+    { "dato": "longaniza", "produce": { "categoria": "Fiambres" } },
+    { "dato": "bon o bon", "produce": { "marca": "Bon o Bon" } },
+    { "dato": "coca cola", "produce": { "marca": "Coca Cola" } },
+    { "dato": "pepsi", "produce": { "marca": "Pepsi" } },
+    { "dato": "fanta", "produce": { "marca": "Fanta" } },
+    { "dato": "paladini", "produce": { "marca": "Paladini" } },
+    { "dato": "glade", "produce": { "marca": "Glade" } },
+    { "dato": "fate", "produce": { "marca": "Fate" } },
+    { "dato": "nexen", "produce": { "marca": "Nexen" } },
+    { "dato": "racing 2000", "produce": { "marca": "Racing 2000" } },
+    { "dato": "michelin", "produce": { "marca": "Michelin" } },
+    { "dato": "villavicencio", "produce": { "marca": "Villavicencio" } },
+    { "dato": "aquarius", "produce": { "marca": "Aquarius" } },
+    { "dato": "levite", "produce": { "marca": "Levite" } },
+    { "dato": "naranja", "produce": { "sabor": "Naranja" } },
+    { "dato": "manzana", "produce": { "sabor": "Manzana" } },
+    { "dato": "citrus", "produce": { "sabor": "Citrus" } },
+    { "dato": "pomelo", "produce": { "sabor": "Pomelo" } },
+    { "dato": "lima limon", "produce": { "sabor": "Lima Limon" } }
+]
