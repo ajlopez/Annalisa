@@ -54,6 +54,44 @@ exports['Analyze company'] = function (test) {
     var result = preciosa.analyze('coca cola argentina');
     
     test.ok(result);
+
+    test.equal(result.fabricanteid, 1);
+
+    test.equal(result.fabricante, 'Coca-Cola de Argentina');
+
+};
+
+exports['Analyze category'] = function (test) {
+    var result = preciosa.analyze('almacen');
+    
+    test.ok(result);
+    test.equal(result.categoriaid, 2);
+    test.equal(result.categoria, 'Almacen');
+};
+
+exports['Analyze brand'] = function (test) {
+    var result = preciosa.analyze('coca cola');
+    
+    test.ok(result);
+    test.equal(result.marcaid, 1);
+    test.equal(result.marca, 'Coca Cola');
     test.equal(result.fabricanteid, 1);
     test.equal(result.fabricante, 'Coca-Cola de Argentina');
-};exports['Analyze category'] = function (test) {    var result = preciosa.analyze('almacen');        test.ok(result);    test.equal(result.categoriaid, 2);    test.equal(result.categoria, 'Almacen');};exports['Analyze brand'] = function (test) {    var result = preciosa.analyze('coca cola');        test.ok(result);    test.equal(result.marcaid, 1);    test.equal(result.marca, 'Coca Cola');    test.equal(result.fabricanteid, 1);    test.equal(result.fabricante, 'Coca-Cola de Argentina');};
+};
+
+exports['Analyze category with product in singular'] = function (test) {
+    var result = preciosa.analyze('aceite');
+    
+    test.ok(result);
+    test.equal(result.categoriaid, 937);
+    test.equal(result.categoria, 'Aceites y cremas');
+};
+
+exports['Analyze category with product in singular and e vowel'] = function (test) {
+    var result = preciosa.analyze('colchon');
+    
+    test.ok(result);
+    test.equal(result.categoriaid, 331);
+    test.equal(result.categoria, 'Colchones y sommier');
+};
+

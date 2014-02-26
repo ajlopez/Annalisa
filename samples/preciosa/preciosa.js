@@ -92,8 +92,39 @@ function addCategoria(row) {
     };
     
     anna.add(item.nombre, item2);
-    anna.define(item.nombre, { categoria: item.nombre, categoriaid: item.id });
+    defineCategoria(item.nombre, item);
 }
+
+function defineCategoria(nombre, item) {
+    var posy = nombre.indexOf(" y ");
+    
+    if (posy > 0) {
+        defineCategoria(nombre.substring(0, posy), item);
+        defineCategoria(nombre.substring(posy + 3), item);
+        return;
+    }
+    
+    var posbar = nombre.indexOf("/");
+    
+    if (posbar > 0) {
+        defineCategoria(nombre.substring(0, posbar), item);
+        defineCategoria(nombre.substring(posbar + 1), item);
+        return;
+    }
+    
+    nombre = nombre.trim();
+    
+    var ncategoria = nombre;
+    
+    ncategoria = ncategoria.replace(/nes /g, "n");
+    ncategoria = ncategoria.replace(/des /g, "d");
+    ncategoria = ncategoria.replace(/nes$/g, "n");
+    ncategoria = ncategoria.replace(/des$/g, "d");
+    ncategoria = ncategoria.replace(/s /g, "");
+    ncategoria = ncategoria.replace(/s$/g, "");
+        
+    anna.define(ncategoria, { categoria: item.nombre, categoriaid: item.id });
+};
 
 module.exports = {
     initialize: initialize,
