@@ -39,6 +39,11 @@ app.get('/api/analyze', function (req, res) {
     res.send(preciosa.analyze(req.param('q')));
 });
 
+app.get('/api/search', function (req, res) {
+    console.dir(req.param('q'));
+    res.send(preciosa.search(req.param('q')));
+});
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
