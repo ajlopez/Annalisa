@@ -82,6 +82,7 @@ function addCategoria(row) {
     };
     
     anna.add(item.nombre, item2);
+    anna.define(item.nombre, { categoria: item.nombre, categoriaid: item.id });
 }
 
 module.exports = {

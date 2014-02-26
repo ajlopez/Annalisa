@@ -56,4 +56,4 @@ exports['Analyze company'] = function (test) {
     test.ok(result);
     test.equal(result.fabricanteid, 1);
     test.equal(result.fabricante, 'Coca-Cola de Argentina');
-};
+};exports['Analyze category'] = function (test) {    var result = preciosa.analyze('almacen');        test.ok(result);    test.equal(result.categoriaid, 2);    test.equal(result.categoria, 'Almacen');};
