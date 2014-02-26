@@ -12,8 +12,10 @@ var app = express();
 
 var preciosa = require('../preciosa');
 preciosa.initialize();
+console.log('Loading data...');
 preciosa.loadMarcasFabricantes();
 preciosa.loadCategorias();
+preciosa.loadProductos();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
