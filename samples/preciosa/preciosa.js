@@ -3,6 +3,7 @@ var anna = require('../..');
 
 var marcas = [];
 var fabricantes = [];
+var categorias = [];
 
 function initialize() {
     anna.clear();
@@ -56,10 +57,38 @@ function addMarca(row) {
     anna.add(item.nombre, item2);
 }
 
+function loadCategorias() {
+    var data = require('./fixtures/categorias.json');
+    
+    data.forEach(function (row) {
+        if (row.model == 'precios.categoria')
+            addCategoria(row);
+    });
+}
+
+function addCategoria(row) {
+    var item = {
+        id: row.pk,
+        nombre: row.fields.nombre
+    };
+    
+    categorias[item.id] = item;
+    
+    var item2 = {
+        id: row.pk,
+        tipo: 'categoria'
+    };
+    
+    anna.add(item.nombre, item2);
+}
+
 module.exports = {
     initialize: initialize,
     loadMarcasFabricantes: loadMarcasFabricantes,
+    loadCategorias: loadCategorias,
     search: anna.search,
     getFabricante: function (id) { return fabricantes[id]; },
-    getMarca: function (id) { return marcas[id]; }
+    getMarca: function (id) { return marcas[id]; },
+    getCategoria: function (id) { return categorias[id]; }
 }
+

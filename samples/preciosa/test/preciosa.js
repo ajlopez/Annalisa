@@ -26,5 +26,25 @@ exports['Retrieve company'] = function (test) {
     test.ok(result);
     test.ok(Array.isArray(result));
     test.ok(result.length);
+
 };
-exports['Retrieve brand'] = function (test) {    var result = preciosa.search('fanta');        test.ok(result);    test.ok(Array.isArray(result));    test.ok(result.length);};
+
+exports['Retrieve brand'] = function (test) {
+    var result = preciosa.search('fanta');
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.ok(result.length);
+};
+
+exports['Load categories'] = function (test) {
+    preciosa.loadCategorias();
+    
+    var result = preciosa.getCategoria(2);
+    
+    test.ok(result);
+    test.equal(result.id, 2);
+    test.equal(result.nombre, 'Almacen');
+};
+exports['Retrieve category'] = function (test) {    var result = preciosa.search('almacen');        test.ok(result);    test.ok(Array.isArray(result));    test.ok(result.length);};
+
