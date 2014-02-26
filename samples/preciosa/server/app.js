@@ -10,6 +10,11 @@ var path = require('path');
 
 var app = express();
 
+var preciosa = require('../preciosa');
+preciosa.initialize();
+preciosa.loadMarcasFabricantes();
+preciosa.loadCategorias();
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +33,11 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+
+app.get('/api/analyze', function (req, res) {
+    console.dir(req.param('q'));
+    res.send(preciosa.analyze(req.param('q')));
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
