@@ -37,6 +37,8 @@ function addFabricante(row) {
     };
 
     anna.add(item.nombre, item2);
+    
+    anna.define(item.nombre, { fabricante: item.nombre, fabricanteid: item.id });
 }
 
 function addMarca(row) {
@@ -87,6 +89,7 @@ module.exports = {
     loadMarcasFabricantes: loadMarcasFabricantes,
     loadCategorias: loadCategorias,
     search: anna.search,
+    analyze: anna.analyze,
     getFabricante: function (id) { return fabricantes[id]; },
     getMarca: function (id) { return marcas[id]; },
     getCategoria: function (id) { return categorias[id]; }

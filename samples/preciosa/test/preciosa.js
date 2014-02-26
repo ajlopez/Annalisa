@@ -21,7 +21,7 @@ exports['load brands and companies'] = function (test) {
 };
 
 exports['Retrieve company'] = function (test) {
-    var result = preciosa.search('coca cola argentina');
+    var result = preciosa.search('argentina cola coca');
     
     test.ok(result);
     test.ok(Array.isArray(result));
@@ -46,5 +46,14 @@ exports['Load categories'] = function (test) {
     test.equal(result.id, 2);
     test.equal(result.nombre, 'Almacen');
 };
-exports['Retrieve category'] = function (test) {    var result = preciosa.search('almacen');        test.ok(result);    test.ok(Array.isArray(result));    test.ok(result.length);};
+exports['Retrieve category'] = function (test) {    var result = preciosa.search('almacen');        test.ok(result);    test.ok(Array.isArray(result));
+    test.ok(result.length);
+};
 
+exports['Analyze company'] = function (test) {
+    var result = preciosa.analyze('coca cola argentina');
+    
+    test.ok(result);
+    test.equal(result.fabricanteid, 1);
+    test.equal(result.fabricante, 'Coca-Cola de Argentina');
+};
