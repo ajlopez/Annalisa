@@ -105,3 +105,9 @@ Posible resultado
 Noten que todavía se confunde con la coma decimal, y reconoce 25 litros, en vez de 2,25 litros.
 
 
+## Próximos pasos
+
+- Arreglar el tema de coma decimal
+- Página de prueba en el inicio, consultando con Ajax/JQuery
+- Posible deploy en Heroku
+
