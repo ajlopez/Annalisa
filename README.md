@@ -33,3 +33,21 @@ Another example
 var result = anna.analize('Peanut butter 800gr.');
 // { category: 'Butter', flavor: 'Peanut', weight: 800, unit: 'gr' }
 ```
+
+## Versions
+
+- 0.0.1 Published
+
+## License
+
+MIT
+
+## Contribution
+
+Feel free to [file issues](https://github.com/ajlopez/Annalisa) and submit
+[pull requests](https://github.com/ajlopez/Annalisa/pulls) — contributions are
+welcome<
+
+If you submit a pull request, please be sure to add or update corresponding
+test cases, and ensure that `npm test` continues to pass.
+
