@@ -94,4 +94,20 @@ exports['Analyze category with product in singular and e vowel'] = function (tes
     test.equal(result.categoriaid, 331);
     test.equal(result.categoria, 'Colchones y sommier');
 };
-exports['Analyze liter'] = function (test) {    var result = preciosa.analyze('1 lt');        test.ok(result);    test.equal(result.tamanio, 1);    test.equal(result.unidad, 'litro');};exports['Analyze liters'] = function (test) {    var result = preciosa.analyze('10 lts');        test.ok(result);    test.equal(result.tamanio, 10);    test.equal(result.unidad, 'litro');};exports['Load products'] = function (test) {    preciosa.loadProductos();        var result = preciosa.getProducto(1);        test.ok(result);    test.equal(result.id, 1);    test.ok(result.nombre);    test.ok(result.upc);};
+exports['Analyze liter'] = function (test) {    var result = preciosa.analyze('1 lt');        test.ok(result);    test.equal(result.volumen, 1);    test.equal(result.unidad_volumen, 'litro');};exports['Analyze liters'] = function (test) {    var result = preciosa.analyze('10 lts');        test.ok(result);    test.equal(result.volumen, 10);    test.equal(result.unidad_volumen, 'litro');};exports['Analyze gram'] = function (test) {
+    var result = preciosa.analyze('1 gr');
+    
+    test.ok(result);
+    test.equal(result.peso, 1);
+    test.equal(result.unidad_peso, 'gramo');
+};
+
+exports['Analyze liters'] = function (test) {
+    var result = preciosa.analyze('10 grs');
+    
+    test.ok(result);
+    test.equal(result.peso, 10);
+    test.equal(result.unidad_peso, 'gramo');
+};
+
+exports['Load products'] = function (test) {    preciosa.loadProductos();        var result = preciosa.getProducto(1);        test.ok(result);    test.equal(result.id, 1);    test.ok(result.nombre);    test.ok(result.upc);};
