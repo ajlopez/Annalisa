@@ -94,7 +94,23 @@ exports['Analyze category with product in singular and e vowel'] = function (tes
     test.equal(result.categoriaid, 331);
     test.equal(result.categoria, 'Colchones y sommier');
 };
-exports['Analyze liter'] = function (test) {    var result = preciosa.analyze('1 lt');        test.ok(result);    test.equal(result.volumen, 1);    test.equal(result.unidad_volumen, 'litro');};exports['Analyze liters'] = function (test) {    var result = preciosa.analyze('10 lts');        test.ok(result);    test.equal(result.volumen, 10);    test.equal(result.unidad_volumen, 'litro');};exports['Analyze gram'] = function (test) {
+exports['Analyze liter'] = function (test) {    var result = preciosa.analyze('1 lt');        test.ok(result);    test.equal(result.volumen, 1);    test.equal(result.unidad_volumen, 'litro');};exports['Analyze liters'] = function (test) {    var result = preciosa.analyze('10 lts');        test.ok(result);    test.equal(result.volumen, 10);    test.equal(result.unidad_volumen, 'litro');};exports['Analyze liters with decimal point'] = function (test) {
+    var result = preciosa.analyze('2.5 lts');
+    
+    test.ok(result);
+    test.equal(result.volumen, 2.5);
+    test.equal(result.unidad_volumen, 'litro');
+};
+
+exports['Analyze liters with comma as decimal point'] = function (test) {
+    var result = preciosa.analyze('2,5 lts');
+    
+    test.ok(result);
+    test.equal(result.volumen, 2.5);
+    test.equal(result.unidad_volumen, 'litro');
+};
+
+exports['Analyze gram'] = function (test) {
     var result = preciosa.analyze('1 gr');
     
     test.ok(result);
@@ -102,7 +118,7 @@ exports['Analyze category with product in singular and e vowel'] = function (tes
     test.equal(result.unidad_peso, 'gramo');
 };
 
-exports['Analyze liters'] = function (test) {
+exports['Analyze grams'] = function (test) {
     var result = preciosa.analyze('10 grs');
     
     test.ok(result);
