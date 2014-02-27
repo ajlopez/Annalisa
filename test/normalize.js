@@ -68,3 +68,8 @@ exports['letters and digits'] = function (test) {
     test.equal(normalize('1lt'), '1 lt');
     test.equal(normalize('1kg.'), '1 kg');
 };
+
+exports['numbers with point or comma'] = function (test) {
+    test.equal(normalize('1.5 lt'), '1.5 lt');
+    test.equal(normalize('1,5 kg.'), '1.5 kg');
+};
