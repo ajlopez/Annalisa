@@ -124,3 +124,19 @@ exports['add and retrieve item using simplified word'] = function (test) {
     test.ok(contains(result, { value: 'Ford Taunus' }));
     test.ok(contains(result, { value: 'Ford Torino' }));
 };
+
+exports['add and retrieve item using mispelled word'] = function (test) {
+    items.clear();
+    items.add('Ford model T', { color: 'black' });
+    items.add('Ford Taunus', { color: 'blue' });
+    items.add('Ford Torino', { color: 'blue' });
+    
+    var result = items.search('fard');
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.equal(result.length, 3);
+    test.ok(contains(result, { value: 'Ford model T' }));
+    test.ok(contains(result, { value: 'Ford Taunus' }));
+    test.ok(contains(result, { value: 'Ford Torino' }));
+};
