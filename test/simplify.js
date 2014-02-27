@@ -11,6 +11,17 @@ exports['simplify word with vowels'] = function (test) {
 
 exports['simplify words with vowels and consonants'] = function (test) {
     test.equal(simplify('house'), 'hs');
-    test.equal(simplify('guardian'), 'grdn');
-    test.equal(simplify('sister'), 'sstr');
+    test.equal(simplify('area'), '_r');
+};
+
+exports['simplify words with repeated consonant'] = function (test) {
+    test.equal(simplify('garra'), 'gr');
+    test.equal(simplify('llama'), 'lm');
+    test.equal(simplify('immediate'), '_mdt');
+};
+
+exports['simplify words removing consonant at end'] = function (test) {
+    test.equal(simplify('guardian'), 'grd');
+    test.equal(simplify('sister'), 'sst');
+    test.equal(simplify('robot'), 'rb');
 };
