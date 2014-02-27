@@ -52,3 +52,19 @@ exports['get integers'] = function (test) {
     test.ok(areEqual(result[1], { value: 42, length: 2, position: 12 }));
 };
 
+exports['get number with decimals'] = function (test) {
+    var result = integers('1.5 lt', true);
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.equal(result.length, 1);
+    test.ok(areEqual(result[0], { value: 1.5, length: 3, position: 0 }));
+};
+
+
+exports['get number with decimals at end'] = function (test) {
+    var result = integers('lt 1.5', true);
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.equal(result.length, 1);
+    test.ok(areEqual(result[0], { value: 1.5, length: 3, position: 3 }));
+};
