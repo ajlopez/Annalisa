@@ -37,6 +37,13 @@ exports['Retrieve brand'] = function (test) {
     test.ok(result.length);
 };
 
+exports['Retrieve mispelled brand'] = function (test) {
+    var result = preciosa.search('fonta');
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.ok(result.length);
+};
 exports['Load categories'] = function (test) {
     preciosa.loadCategorias();
     
@@ -134,4 +141,3 @@ exports['Analyze grams'] = function (test) {
     test.equal(result.unidad_peso, 'gramo');
 };
 
-exports['Load products'] = function (test) {    preciosa.loadProductos();        var result = preciosa.getProducto(1);        test.ok(result);    test.equal(result.id, 1);    test.ok(result.nombre);    test.ok(result.upc);};
