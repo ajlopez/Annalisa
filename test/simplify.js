@@ -25,3 +25,9 @@ exports['simplify words removing consonant at end'] = function (test) {
     test.equal(simplify('sister'), 'sst');
     test.equal(simplify('robot'), 'rb');
 };
+
+exports['simplify words with strong and soft c'] = function (test) {
+    test.equal(simplify('card'), 'kr');
+    test.equal(simplify('cease'), 'ss');
+    test.equal(simplify('credential'), 'krdnt');
+};
