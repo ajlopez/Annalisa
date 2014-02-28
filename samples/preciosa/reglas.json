@@ -15,6 +15,7 @@
 
     { "dato": "longaniza", "produce": { "categoria": "Fiambres" } },
     { "dato": "spaghetti", "produce": { "categoria": "Fideos" } },
+    { "dato": "spaguetti", "produce": { "categoria": "Fideos" } },
     
     { "dato": "naranja", "produce": { "sabor": "Naranja" } },
     { "dato": "manzana", "produce": { "sabor": "Manzana" } },
