@@ -31,3 +31,8 @@ exports['simplify words with strong and soft c'] = function (test) {
     test.equal(simplify('cease'), 'ss');
     test.equal(simplify('credential'), 'krdnt');
 };
+
+exports['simplify words with v and b'] = function (test) {
+    test.equal(simplify('baby'), 'bb');
+    test.equal(simplify('valve'), 'blb');
+};
