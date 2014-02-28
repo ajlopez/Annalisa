@@ -87,6 +87,14 @@ exports['Analyze category with product in singular'] = function (test) {
     test.equal(result.categoria, 'Aceites y cremas');
 };
 
+exports['Analyze category with product in plural'] = function (test) {
+    var result = preciosa.analyze('aceites');
+    
+    test.ok(result);
+    test.equal(result.categoriaid, 937);
+    test.equal(result.categoria, 'Aceites y cremas');
+};
+
 exports['Analyze category with product in singular and e vowel'] = function (test) {
     var result = preciosa.analyze('colchon');
     

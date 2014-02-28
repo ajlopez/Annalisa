@@ -14,6 +14,7 @@
     { "dato": [2, "kgs"], "produce": { "peso": "${Number}", "unidad_peso": "kilogramo" } },
 
     { "dato": "longaniza", "produce": { "categoria": "Fiambres" } },
+    { "dato": "spaghetti", "produce": { "categoria": "Fideos" } },
     
     { "dato": "naranja", "produce": { "sabor": "Naranja" } },
     { "dato": "manzana", "produce": { "sabor": "Manzana" } },
