@@ -221,6 +221,31 @@ function addCiudad(row) {
         item[n] = pp[n];
         
     ciudades[item.id] = item;
+
+    var item2 = { };
+    
+    for (var n in item)
+        if (n != 'nombre')
+            item2[n] = item[n];
+    
+    anna.add(item.nombre, item2);
+    
+    var assocdata = { };
+    
+    for (var n in item) {
+        if (n == 'id')
+            assocdata.ciudadid = item.id;
+        else if (n == 'longitud')
+            assocdata.ciudad_longitud = item[n];
+        else if (n == 'latitud')
+            assocdata.ciudad_latitud = item[n];
+        else if (n == 'nombre')
+            assocdata.ciudad = item[n];
+        else
+            assocdata[n] = item[n];
+    }
+    
+    anna.define(item.nombre, assocdata);
 }
 
 function getProvinciaPais(fullname) {

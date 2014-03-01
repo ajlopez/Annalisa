@@ -6,7 +6,7 @@ exports['initialize'] = function (test) {
 
 };
 
-exports['Load products'] = function (test) {
+exports['Load cities'] = function (test) {
     preciosa.loadCiudades();
     
     var result = preciosa.getCiudad(1);
@@ -26,4 +26,32 @@ exports['Load products'] = function (test) {
     test.equal(result.provincia, 'Buenos Aires');
     test.equal(result.pais, 'Argentina');
 };
+
+exports['Search city'] = function (test) {
+    var result = preciosa.search('ezpeleta');
+    console.dir(result);
+    test.ok(result);
+    test.ok(result.length);
+    
+    var item = result[0];
+    
+    test.equal(item.value, 'Ezpeleta');
+    test.ok(item.data);
+    test.ok(item.data.id);
+    test.equal(item.data.provincia, 'Buenos Aires');
+    test.equal(item.data.pais, 'Argentina');
+};
+
+exports['Extract city from string'] = function (test) {
+    var result = preciosa.analyze('I visited ezpeleta');
+    console.dir(result);
+    test.ok(result);
+    test.ok(result.ciudad);
+    
+    test.equal(result.ciudad, 'Ezpeleta');
+    test.ok(result.ciudadid);
+    test.equal(result.provincia, 'Buenos Aires');
+    test.equal(result.pais, 'Argentina');
+};
+
 
