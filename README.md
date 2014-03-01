@@ -38,7 +38,9 @@ var result = anna.analize('Peanut butter 800gr.');
 
 - 0.0.1 Published
 - 0.0.2 Published. Using simplied words in search. Analyze recognize numbers with point or comma as decimal point.
-- 0.0.3 Published. z to s, q to k in simplify, more preciosa use cases
+- 0.0.3 Published. q to k in simplify, more preciosa use cases
+- 0.0.4 Published, z to s in simplify, initial vowel preserved in simplify, treatment for spaces, null, empty string
+in analyze and search
 
 ## License
 
