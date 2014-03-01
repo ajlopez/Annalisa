@@ -5,6 +5,7 @@ var marcas = [];
 var fabricantes = [];
 var categorias = [];
 var productos = [];
+var ciudades = [];
 
 function initialize() {
     anna.clear();
@@ -191,16 +192,75 @@ function addProducto(row) {
     anna.add(item.nombre, item2);
 }
 
+function loadCiudades() {
+    var data = require('./fixtures/ciudades.json');
+    
+    data.forEach(function (row) {
+        if (row.model == 'cities_light.city')
+            addCiudad(row);
+    });
+}
+
+function addCiudad(row) {
+    var item = { };
+    item.id = row.pk;
+    item.nombre = row.fields.name;
+    
+    if (row.fields.geoname_id)
+        item.geonameid = row.fields.geoname_id;
+        
+    if (row.fields.longitude)
+        item.longitud = parseFloat(row.fields.longitude);
+        
+    if (row.fields.latitude)
+        item.latitud = parseFloat(row.fields.latitude);
+        
+    var pp = getProvinciaPais(row.fields.display_name);
+    
+    for (n in pp)
+        item[n] = pp[n];
+        
+    ciudades[item.id] = item;
+}
+
+function getProvinciaPais(fullname) {
+    var result = { };
+    
+    if (!fullname)
+        return result;
+        
+    var pos1 = fullname.indexOf(",");
+    
+    if (pos1 < 0)
+        return result;
+        
+    var name = fullname.substring(pos1 + 1);
+    
+    var pos2 = name.indexOf(",");
+    
+    if (pos2 < 0) {
+        result.provincia = name.trim();
+        return result;
+    }
+    
+    result.provincia = name.substring(0, pos2).trim();
+    result.pais = name.substring(pos2 + 1).trim();
+    
+    return result;
+}
+
 module.exports = {
     initialize: initialize,
     loadMarcasFabricantes: loadMarcasFabricantes,
     loadCategorias: loadCategorias,
     loadProductos: loadProductos,
+    loadCiudades: loadCiudades,
     search: anna.search,
     analyze: anna.analyze,
     getFabricante: function (id) { return fabricantes[id]; },
     getMarca: function (id) { return marcas[id]; },
     getCategoria: function (id) { return categorias[id]; },
-    getProducto: function (id) { return productos[id]; }
+    getProducto: function (id) { return productos[id]; },
+    getCiudad: function (id) { return ciudades[id]; }
 }
 
