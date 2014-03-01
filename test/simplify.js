@@ -41,3 +41,8 @@ exports['simplify words with q'] = function (test) {
     test.equal(simplify('query'), 'kr');
     test.equal(simplify('disqualify'), 'dsklf');
 };
+
+exports['simplify words with z'] = function (test) {
+    test.equal(simplify('zeta'), 'st');
+    test.equal(simplify('disqualify'), 'dsklf');
+};
