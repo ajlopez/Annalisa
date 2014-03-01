@@ -1,0 +1,30 @@
+{ id: 5667,
+  nombre: 'Las Heras',
+  tipo: 'ciudad',
+  provincia: 'Mendoza',
+  pais: 'Argentina' }
+{ id: 5668,
+  nombre: 'Guaymallén',
+  tipo: 'ciudad',
+  provincia: 'Mendoza',
+  pais: 'Argentina' }
+{ id: 5669,
+  nombre: 'Yerba Buena',
+  tipo: 'ciudad',
+  provincia: 'Tucumán',
+  pais: 'Argentina' }
+{ id: 5670,
+  nombre: 'Libertador General San Martín',
+  tipo: 'ciudad',
+  provincia: 'Jujuy',
+  pais: 'Argentina' }
+{ id: 5674,
+  nombre: 'San Miguel',
+  tipo: 'ciudad',
+  provincia: 'Buenos Aires',
+  pais: 'Argentina' }
+{ id: 5675,
+  nombre: 'San Cristobal',
+  tipo: 'ciudad',
+  provincia: 'Buenos Aires F.D.',
+  pais: 'Argentina' }
