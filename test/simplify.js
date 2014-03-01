@@ -6,18 +6,18 @@ exports['simplify empty string'] = function (test) {
 };
 
 exports['simplify word with vowels'] = function (test) {
-    test.equal(simplify('aeiou'), '_');
+    test.equal(simplify('aeiou'), 'a');
 };
 
 exports['simplify words with vowels and consonants'] = function (test) {
     test.equal(simplify('house'), 'hs');
-    test.equal(simplify('area'), '_r');
+    test.equal(simplify('area'), 'ar');
 };
 
 exports['simplify words with repeated consonant'] = function (test) {
     test.equal(simplify('garra'), 'gr');
     test.equal(simplify('llama'), 'lm');
-    test.equal(simplify('immediate'), '_mdt');
+    test.equal(simplify('immediate'), 'imdt');
 };
 
 exports['simplify words removing consonant at end'] = function (test) {

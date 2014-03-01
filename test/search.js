@@ -31,6 +31,33 @@ exports['retrieve nothing'] = function (test) {
     test.equal(result.length, 0);
 };
 
+exports['search empty string'] = function (test) {
+    items.clear();
+    var result = items.search('');
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.equal(result.length, 0);
+};
+
+exports['search empty null'] = function (test) {
+    items.clear();
+    var result = items.search('');
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.equal(result.length, 0);
+};
+
+exports['search spaces'] = function (test) {
+    items.clear();
+    var result = items.search('');
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.equal(result.length, 0);
+};
+
 exports['add and retrieve simple item'] = function (test) {
     items.clear();
     items.add('foo');

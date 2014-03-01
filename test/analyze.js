@@ -22,6 +22,14 @@ exports['analyze cheese'] = function (test) {
     test.ok(areEqual(anna.analyze('Cheese 800gr'), data));
 };
 
+exports['analyze null, empty string, spaces'] = function (test) {
+    var data = { category: 'dairy', type: 'cheese' };
+    anna.define('cheese', data);
+    test.ok(areEqual(anna.analyze(null), { }));
+    test.ok(areEqual(anna.analyze(''), { }));
+    test.ok(areEqual(anna.analyze('   '), { }));
+};
+
 exports['analyze Spanish brand'] = function (test) {
     var data = { brand: 'La Serenísima' };
     anna.define('La Serenísima', data);
