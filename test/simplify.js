@@ -36,3 +36,8 @@ exports['simplify words with v and b'] = function (test) {
     test.equal(simplify('baby'), 'bb');
     test.equal(simplify('valve'), 'blb');
 };
+
+exports['simplify words with q'] = function (test) {
+    test.equal(simplify('query'), 'kr');
+    test.equal(simplify('disqualify'), 'dsklf');
+};
