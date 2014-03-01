@@ -14,7 +14,6 @@ exports['Load cities'] = function (test) {
     test.ok(result);
     test.equal(result.id, 1);
 
-    console.dir(result);
     test.ok(result.nombre);
     test.ok(result.provincia);
     test.ok(result.pais);
@@ -29,7 +28,6 @@ exports['Load cities'] = function (test) {
 
 exports['Search city'] = function (test) {
     var result = preciosa.search('ezpeleta');
-    console.dir(result);
     test.ok(result);
     test.ok(result.length);
     
@@ -40,11 +38,11 @@ exports['Search city'] = function (test) {
     test.ok(item.data.id);
     test.equal(item.data.provincia, 'Buenos Aires');
     test.equal(item.data.pais, 'Argentina');
+    test.equal(item.data.tipo, 'ciudad');
 };
 
 exports['Extract city from string'] = function (test) {
     var result = preciosa.analyze('I visited ezpeleta');
-    console.dir(result);
     test.ok(result);
     test.ok(result.ciudad);
     

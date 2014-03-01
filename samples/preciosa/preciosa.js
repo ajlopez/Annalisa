@@ -205,6 +205,7 @@ function addCiudad(row) {
     var item = { };
     item.id = row.pk;
     item.nombre = row.fields.name;
+    item.tipo = 'ciudad';
     
     if (row.fields.geoname_id)
         item.geonameid = row.fields.geoname_id;
