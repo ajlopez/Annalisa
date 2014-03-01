@@ -287,6 +287,7 @@ module.exports = {
     getMarca: function (id) { return marcas[id]; },
     getCategoria: function (id) { return categorias[id]; },
     getProducto: function (id) { return productos[id]; },
+    getProductos: function (id) { return productos; },
     getCiudad: function (id) { return ciudades[id]; },
     getCiudades: function () { return ciudades; }
 }
