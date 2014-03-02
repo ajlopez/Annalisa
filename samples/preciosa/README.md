@@ -61,7 +61,7 @@ Posible resultado
   {
     "value": "Gaseosa de pomelo fanta 1,5 lt",
     "data": {
-      "tamanio": 5,
+      "tamanio": 1.5,
       "unidad": "litro",
       "sabor": "Pomelo",
       "marca": "Fanta",
@@ -78,7 +78,7 @@ Posible resultado
   {
     "value": "Gaseosa de pomelo fanta 1,5 lt",
     "data": {
-      "tamanio": 5,
+      "tamanio": 1.5,
       "unidad": "litro",
       "sabor": "Pomelo",
       "marca": "Fanta",
@@ -95,19 +95,14 @@ Posible resultado
   {
     "value": "Gaseosa de pomelo fanta 2,25 lt",
     "data": {
-      "tamanio": 25,
+      "tamanio": 2.25,
       "unidad": "litro",
       
    ...
    ...
 ```
 
-Noten que todavía se confunde con la coma decimal, y reconoce 25 litros, en vez de 2,25 litros.
-
-
 ## Próximos pasos
 
-- Arreglar el tema de coma decimal
-- Página de prueba en el inicio, consultando con Ajax/JQuery
-- Posible deploy en Heroku
+- Consumir la nueva API de Preciosa http://preciosdeargentina.com.ar/api/v1/
 
