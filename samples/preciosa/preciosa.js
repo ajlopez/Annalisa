@@ -27,6 +27,14 @@ function loadMarcasFabricantes() {
         else if (row.model == 'precios.marca')
             addMarca(row);
     });
+    
+    fabricantes.forEach(function (item) {
+        defineFabricante(item);
+    });
+    
+    marcas.forEach(function (item) {
+        defineMarca(item);
+    });
 }
 
 function addFabricante(row) {
@@ -37,10 +45,12 @@ function addFabricante(row) {
     };
     
     fabricantes[item.id] = item;
+}
 
+function defineFabricante(item) {
     var item2 = {
-        id: row.pk,
-        logo: row.fields.logo,
+        id: item.id,
+        logo: item.logo,
         tipo: 'fabricante'
     };
 
@@ -57,10 +67,12 @@ function addMarca(row) {
     };
     
     marcas[item.id] = item;
-    
+}
+
+function defineMarca(item) {   
     var item2 = {
-        id: row.pk,
-        fabricanteid: row.fields.fabricante,
+        id: item.id,
+        fabricanteid: item.fabricanteid,
         tipo: 'marca'
     };
     
