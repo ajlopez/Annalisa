@@ -1,7 +1,7 @@
 
 var http = require('http');
 
-var url = 'http://preciosdeargentina.com.ar/api/v1/marcas/?page=1&format=json&page_size=100';
+var url = 'http://preciosdeargentina.com.ar/api/v1/marcas/?page=1&format=json&page_size=10';
 
 http.get(url, function(res) {
     var body = '';

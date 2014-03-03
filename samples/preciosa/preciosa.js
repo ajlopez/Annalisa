@@ -1,5 +1,6 @@
 ﻿
 var anna = require('../..');
+var http = require('http');
 
 var marcas = [];
 var fabricantes = [];
@@ -16,6 +17,35 @@ function initialize() {
     reglas.forEach(function (regla) {
         anna.define(regla.dato, regla.produce);
     });
+}
+
+function loadRemoteMarcas(cb) {
+    var url = 'http://preciosdeargentina.com.ar/api/v1/marcas/?page=1&format=json&page_size=100';
+
+    http.get(url, function(res) {
+        var body = '';
+
+        res.on('data', function(chunk) {
+            body += chunk;
+        });
+
+        res.on('end', function() {
+            try {
+                var content = JSON.parse(body);
+                
+                if (content && content.results)
+                    content.results.forEach(function (result) {
+                    });
+            }
+            catch (err) {
+                cb(err, null);
+            };
+            
+            cb(null, null);
+        });
+    }).on('error', function(e) {
+        cb(e, null);
+    });    
 }
 
 function loadMarcasFabricantes() {
