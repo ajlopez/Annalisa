@@ -35,6 +35,20 @@ function loadRemoteMarcas(cb) {
                 
                 if (content && content.results)
                     content.results.forEach(function (result) {
+                        if (marcas[result.id]) {
+                            marcas[result.id].nombre = result.nombre;
+                        }
+                        else {
+                            var item = { id: result.id, nombre: result.nombre };
+                            marcas[result.id] = item;
+                        }
+                        
+                        if (result.fabricante && result.fabricante.id) {
+                            marcas[result.id].fabricanteid = result.fabricante.id;
+                            
+                            if (fabricantes[result.fabricante.id])
+                                fabricantes[result.fabricante.id].nombre = result.fabricante.nombre;
+                        }
                     });
             }
             catch (err) {
