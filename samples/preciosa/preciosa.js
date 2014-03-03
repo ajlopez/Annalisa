@@ -48,6 +48,8 @@ function loadRemoteMarcas(cb) {
                             
                             if (fabricantes[result.fabricante.id])
                                 fabricantes[result.fabricante.id].nombre = result.fabricante.nombre;
+                            else
+                                fabricantes[result.fabricante.id] = { id: result.fabricante.id, nombre: result.fabricante.nombre };
                         }
                     });
             }
