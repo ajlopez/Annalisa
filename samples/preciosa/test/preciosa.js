@@ -7,6 +7,7 @@ exports['initialize'] = function (test) {
 
 exports['load brands and companies'] = function (test) {
     preciosa.loadMarcasFabricantes();
+    preciosa.defineMarcasFabricantes();
     
     var marca = preciosa.getMarca(1);
     test.ok(marca);

@@ -20,7 +20,7 @@ function initialize() {
 }
 
 function loadRemoteMarcas(cb) {
-    var url = 'http://preciosdeargentina.com.ar/api/v1/marcas/?page=1&format=json&page_size=100';
+    var url = 'http://preciosdeargentina.com.ar/api/v1/marcas/?page=1&format=json&page_size=5000';
 
     http.get(url, function(res) {
         var body = '';
@@ -57,14 +57,6 @@ function loadMarcasFabricantes() {
         else if (row.model == 'precios.marca')
             addMarca(row);
     });
-    
-    fabricantes.forEach(function (item) {
-        defineFabricante(item);
-    });
-    
-    marcas.forEach(function (item) {
-        defineMarca(item);
-    });
 }
 
 function addFabricante(row) {
@@ -75,6 +67,16 @@ function addFabricante(row) {
     };
     
     fabricantes[item.id] = item;
+}
+
+function defineMarcasFabricantes() {    
+    fabricantes.forEach(function (item) {
+        defineFabricante(item);
+    });
+    
+    marcas.forEach(function (item) {
+        defineMarca(item);
+    });
 }
 
 function defineFabricante(item) {
@@ -320,6 +322,8 @@ function getProvinciaPais(fullname) {
 module.exports = {
     initialize: initialize,
     loadMarcasFabricantes: loadMarcasFabricantes,
+    loadRemoteMarcas: loadRemoteMarcas,
+    defineMarcasFabricantes: defineMarcasFabricantes,
     loadCategorias: loadCategorias,
     loadProductos: loadProductos,
     loadCiudades: loadCiudades,

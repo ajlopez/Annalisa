@@ -22,3 +22,13 @@ exports['Load brands, companies'] = function (test) {
     test.ok(result.nombre);
 };
 
+exports['Load remote brands'] = function (test) {
+    test.async();
+    
+    preciosa.loadRemoteMarcas(function (err, data) {
+        test.equal(err, null);
+        test.done();
+    });
+};
+
+
