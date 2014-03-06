@@ -16,7 +16,7 @@ function areEqual(obj1, obj2) {
 
 exports['analyze cheese'] = function (test) {
     var data = { category: 'dairy', type: 'cheese' };
-    anna.define('cheese', data);
+    anna.defineRule('cheese', data);
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Blue Cheese'), data));
     test.ok(areEqual(anna.analyze('Cheese 800gr'), data));
@@ -24,7 +24,7 @@ exports['analyze cheese'] = function (test) {
 
 exports['analyze null, empty string, spaces'] = function (test) {
     var data = { category: 'dairy', type: 'cheese' };
-    anna.define('cheese', data);
+    anna.defineRule('cheese', data);
     test.ok(areEqual(anna.analyze(null), { }));
     test.ok(areEqual(anna.analyze(''), { }));
     test.ok(areEqual(anna.analyze('   '), { }));
@@ -32,7 +32,7 @@ exports['analyze null, empty string, spaces'] = function (test) {
 
 exports['analyze Spanish brand'] = function (test) {
     var data = { brand: 'La Serenísima' };
-    anna.define('La Serenísima', data);
+    anna.defineRule('La Serenísima', data);
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Queso La Serenísima'), data));
     test.ok(areEqual(anna.analyze('Leche La Serenísima'), data));
@@ -48,7 +48,7 @@ exports['analyze Spanish brand with discarded words'] = function (test) {
     anna.discard('de');
     
     var data = { brand: 'La Serenísima' };
-    anna.define('La Serenísima', data);
+    anna.defineRule('La Serenísima', data);
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Queso La Serenísima'), data));
     test.ok(areEqual(anna.analyze('Leche La Serenísima'), data));
@@ -64,7 +64,7 @@ exports['analyze Spanish brand with discaded words in array'] = function (test) 
     anna.discard(['el', 'los', 'la', 'de']);
     
     var data = { brand: 'La Serenísima' };
-    anna.define('La Serenísima', data);
+    anna.defineRule('La Serenísima', data);
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Queso La El Los DE Serenísima'), data));
     test.ok(areEqual(anna.analyze('Leche DE La Serenísima'), data));
@@ -80,7 +80,7 @@ exports['analyze and get not used words'] = function (test) {
     anna.clear();
     anna.discard(['el', 'los', 'la', 'de']);
     var data = { brand: 'La Serenísima' };
-    anna.define('La Serenísima', data);
+    anna.defineRule('La Serenísima', data);
     test.ok(areEqual(anna.analyze('foo', { notused: true } ), { notused: 'foo' }));
     test.ok(areEqual(anna.analyze('Queso La El Los DE Serenísima', { notused: true } ), { brand: 'La Serenísima', notused: 'queso' }));
 };

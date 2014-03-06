@@ -10,7 +10,7 @@ exports['no result'] = function (test) {
 }
 
 exports['match exact word'] = function (test) {
-    anna.define('foo', { type: 'bar' });
+    anna.defineRule('foo', { type: 'bar' });
     var result = anna.analyze('foo');
     
     test.ok(result);
@@ -20,7 +20,7 @@ exports['match exact word'] = function (test) {
 }
 
 exports['match upper case word'] = function (test) {
-    anna.define('foo', { type: 'bar' });
+    anna.defineRule('foo', { type: 'bar' });
     var result = anna.analyze('FOO');
     
     test.ok(result);
@@ -30,7 +30,7 @@ exports['match upper case word'] = function (test) {
 }
 
 exports['match mixed case word'] = function (test) {
-    anna.define('foo', { type: 'bar' });
+    anna.defineRule('foo', { type: 'bar' });
     var result = anna.analyze('Foo');
     
     test.ok(result);
@@ -40,7 +40,7 @@ exports['match mixed case word'] = function (test) {
 }
 
 exports['match upper case key'] = function (test) {
-    anna.define('FOO', { type: 'bar' });
+    anna.defineRule('FOO', { type: 'bar' });
     var result = anna.analyze('foo');
     
     test.ok(result);
@@ -50,7 +50,7 @@ exports['match upper case key'] = function (test) {
 }
 
 exports['match key with spaces and tabs'] = function (test) {
-    anna.define(' \t FOO   ', { type: 'bar' });
+    anna.defineRule(' \t FOO   ', { type: 'bar' });
     var result = anna.analyze('foo');
     
     test.ok(result);
@@ -60,7 +60,7 @@ exports['match key with spaces and tabs'] = function (test) {
 }
 
 exports['match word with spaces and tabs'] = function (test) {
-    anna.define('foo', { type: 'bar' });
+    anna.defineRule('foo', { type: 'bar' });
     var result = anna.analyze('   \t\t foo   ');
     
     test.ok(result);

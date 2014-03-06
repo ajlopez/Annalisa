@@ -15,22 +15,22 @@ function areEqual(obj1, obj2) {
 }
 
 exports['get weigth'] = function (test) {
-    anna.define([anna.Number, 'gr'], { weight: '${Number}', unit: 'gram' });
+    anna.defineRule([anna.Number, 'gr'], { weight: '${Number}', unit: 'gram' });
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Blue Cheese 800gr'), { weight: 800, unit: 'gram' }));
 }
 
 exports['get weigth with decimals'] = function (test) {
-    anna.define([anna.Number, 'kg'], { weight: '${Number}', unit: 'kilogram' });
+    anna.defineRule([anna.Number, 'kg'], { weight: '${Number}', unit: 'kilogram' });
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Blue Cheese 0.800kg'), { weight: 0.8, unit: 'kilogram' }));
 }
 
 exports['get bedrooms and bathrooms'] = function (test) {
-    anna.define([anna.Number, 'bedrooms'], { bedrooms: '${Number}' });
-    anna.define([anna.Number, 'bathrooms'], { bathrooms: '${Number}' });
-    anna.define([anna.Number, 'bedroom'], { bedrooms: '${Number}' });
-    anna.define([anna.Number, 'bathroom'], { bathrooms: '${Number}' });
+    anna.defineRule([anna.Number, 'bedrooms'], { bedrooms: '${Number}' });
+    anna.defineRule([anna.Number, 'bathrooms'], { bathrooms: '${Number}' });
+    anna.defineRule([anna.Number, 'bedroom'], { bedrooms: '${Number}' });
+    anna.defineRule([anna.Number, 'bathroom'], { bathrooms: '${Number}' });
     
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('1 bedroom, 1 bathroom'), { bedrooms: 1, bathrooms: 1 }));
@@ -38,8 +38,8 @@ exports['get bedrooms and bathrooms'] = function (test) {
 }
 
 exports['get temperature'] = function (test) {
-    anna.define([anna.Number, 'C'], { temperature: '${Number}', scale: 'Celsius' });
-    anna.define([anna.Number, 'F'], { temperature: '${Number}', scale: 'Farenheit' });
+    anna.defineRule([anna.Number, 'C'], { temperature: '${Number}', scale: 'Celsius' });
+    anna.defineRule([anna.Number, 'F'], { temperature: '${Number}', scale: 'Farenheit' });
     
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Buenos Aires 42c'), { temperature: 42, scale: 'Celsius' }));
@@ -47,8 +47,8 @@ exports['get temperature'] = function (test) {
 }
 
 exports['get temperature with decimals'] = function (test) {
-    anna.define([anna.Number, 'C'], { temperature: '${Number}', scale: 'Celsius' });
-    anna.define([anna.Number, 'F'], { temperature: '${Number}', scale: 'Farenheit' });
+    anna.defineRule([anna.Number, 'C'], { temperature: '${Number}', scale: 'Celsius' });
+    anna.defineRule([anna.Number, 'F'], { temperature: '${Number}', scale: 'Farenheit' });
     
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Buenos Aires 42.5c'), { temperature: 42.5, scale: 'Celsius' }));
@@ -56,8 +56,8 @@ exports['get temperature with decimals'] = function (test) {
 }
 
 exports['get integer after match'] = function (test) {
-    anna.define(['players', anna.Number], { players: '${Number}' });
-    anna.define(['boards', anna.Number], { boards: '${Number}' });
+    anna.defineRule(['players', anna.Number], { players: '${Number}' });
+    anna.defineRule(['boards', anna.Number], { boards: '${Number}' });
     
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Players 10'), { players: 10 }));
@@ -66,7 +66,7 @@ exports['get integer after match'] = function (test) {
 }
 
 exports['get number with decimals after match'] = function (test) {
-    anna.define(['money', anna.Number], { money: '${Number}' });
+    anna.defineRule(['money', anna.Number], { money: '${Number}' });
     
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Money 10.5'), { money: 10.5 }));
