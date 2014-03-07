@@ -160,7 +160,9 @@ function addCategoria(row) {
     };
     
     anna.add(item.nombre, item2);
-    defineCategoria(item.nombre, item);
+    
+    if (row.fields.depth == 3)
+        defineCategoria(item.nombre, item);
 }
 
 function defineCategoria(nombre, item) {

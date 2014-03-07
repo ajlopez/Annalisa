@@ -66,15 +66,14 @@ exports['Analyze company'] = function (test) {
     test.equal(result.fabricanteid, 1);
 
     test.equal(result.fabricante, 'Coca-Cola de Argentina');
-
 };
 
 exports['Analyze category'] = function (test) {
-    var result = preciosa.analyze('almacen');
+    var result = preciosa.analyze('tablas de madera');
     
     test.ok(result);
-    test.equal(result.categoriaid, 2);
-    test.equal(result.categoria, 'Almacen');
+    test.equal(result.categoriaid, 344);
+    test.equal(result.categoria, 'Tablas de madera');
 };
 
 exports['Analyze brand'] = function (test) {
@@ -91,16 +90,16 @@ exports['Analyze category with product in singular'] = function (test) {
     var result = preciosa.analyze('aceite');
     
     test.ok(result);
-    test.equal(result.categoriaid, 937);
-    test.equal(result.categoria, 'Aceites y cremas');
+    test.equal(result.categoriaid, 623);
+    test.equal(result.categoria, 'Aceites');
 };
 
 exports['Analyze category with product in plural'] = function (test) {
     var result = preciosa.analyze('aceites');
     
     test.ok(result);
-    test.equal(result.categoriaid, 937);
-    test.equal(result.categoria, 'Aceites y cremas');
+    test.equal(result.categoriaid, 623);
+    test.equal(result.categoria, 'Aceites');
 };
 
 exports['Analyze category with product in singular and e vowel'] = function (test) {
