@@ -15,16 +15,16 @@ function areEqual(obj1, obj2) {
 }
 
 exports['get weigth'] = function (test) {
-    anna.define([anna.Integer, 'gr'], { weight: '${Integer}', unit: 'gram' });
+    anna.defineRule([anna.Integer, 'gr'], { weight: '${Integer}', unit: 'gram' });
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Blue Cheese 800gr'), { weight: 800, unit: 'gram' }));
 }
 
 exports['get bedrooms and bathrooms'] = function (test) {
-    anna.define([anna.Integer, 'bedrooms'], { bedrooms: '${Integer}' });
-    anna.define([anna.Integer, 'bathrooms'], { bathrooms: '${Integer}' });
-    anna.define([anna.Integer, 'bedroom'], { bedrooms: '${Integer}' });
-    anna.define([anna.Integer, 'bathroom'], { bathrooms: '${Integer}' });
+    anna.defineRule([anna.Integer, 'bedrooms'], { bedrooms: '${Integer}' });
+    anna.defineRule([anna.Integer, 'bathrooms'], { bathrooms: '${Integer}' });
+    anna.defineRule([anna.Integer, 'bedroom'], { bedrooms: '${Integer}' });
+    anna.defineRule([anna.Integer, 'bathroom'], { bathrooms: '${Integer}' });
     
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('1 bedroom, 1 bathroom'), { bedrooms: 1, bathrooms: 1 }));
@@ -32,8 +32,8 @@ exports['get bedrooms and bathrooms'] = function (test) {
 }
 
 exports['get temperature'] = function (test) {
-    anna.define([anna.Integer, 'C'], { temperature: '${Integer}', scale: 'Celsius' });
-    anna.define([anna.Integer, 'F'], { temperature: '${Integer}', scale: 'Farenheit' });
+    anna.defineRule([anna.Integer, 'C'], { temperature: '${Integer}', scale: 'Celsius' });
+    anna.defineRule([anna.Integer, 'F'], { temperature: '${Integer}', scale: 'Farenheit' });
     
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Buenos Aires 42c'), { temperature: 42, scale: 'Celsius' }));
@@ -41,8 +41,8 @@ exports['get temperature'] = function (test) {
 }
 
 exports['get integer after match'] = function (test) {
-    anna.define(['players', anna.Integer], { players: '${Integer}' });
-    anna.define(['boards', anna.Integer], { boards: '${Integer}' });
+    anna.defineRule(['players', anna.Integer], { players: '${Integer}' });
+    anna.defineRule(['boards', anna.Integer], { boards: '${Integer}' });
     
     test.ok(areEqual(anna.analyze('foo'), { }));
     test.ok(areEqual(anna.analyze('Players 10'), { players: 10 }));
