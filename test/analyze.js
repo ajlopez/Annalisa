@@ -84,3 +84,27 @@ exports['analyze and get not used words'] = function (test) {
     test.ok(areEqual(anna.analyze('foo', { notused: true } ), { notused: 'foo' }));
     test.ok(areEqual(anna.analyze('Queso La El Los DE Serenísima', { notused: true } ), { brand: 'La Serenísima', notused: 'queso' }));
 };
+
+exports['analyze using a function'] = function (test) {
+    anna.clear();
+    anna.discard(['el', 'los', 'la', 'de']);
+    
+    anna.defineRule(function (text) {
+        return { description: text.trim() };
+    });
+
+    test.ok(areEqual(anna.analyze(' FOO  '), { description: 'foo' }));
+    test.ok(areEqual(anna.analyze('Queso La El Los DE Serenísima'), { description: 'queso serenisima' }));
+};
+
+exports['analyze using a function with raw data'] = function (test) {
+    anna.clear();
+    anna.discard(['el', 'los', 'la', 'de']);
+    
+    anna.defineRule(function (text) {
+        return { description: text };
+    }, { raw: true });
+
+    test.ok(areEqual(anna.analyze(' FOO  '), { description: ' FOO  ' }));
+    test.ok(areEqual(anna.analyze('Queso La El Los DE Serenísima'), { description: 'Queso La El Los DE Serenísima' }));
+};
