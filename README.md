@@ -41,6 +41,7 @@ var result = anna.analize('Peanut butter 800gr.');
 - 0.0.3 Published. q to k in simplify, more preciosa use cases
 - 0.0.4 Published, z to s in simplify, initial vowel preserved in simplify, treatment for spaces, null, empty string
 in analyze and search
+- 0.0.5 Published, rules as function with raw option
 
 ## License
 
