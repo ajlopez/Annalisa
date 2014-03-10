@@ -141,3 +141,49 @@ exports['Analyze grams'] = function (test) {
     test.equal(result.unidad_peso, 'gramo');
 };
 
+exports['Analyze units'] = function (test) {
+    var result = preciosa.analyze('10 un');
+    
+    test.ok(result);
+    test.equal(result.unidades, 10);
+    test.equal(result.unidad, 'unidad');
+
+    var result = preciosa.analyze('30 ud');
+    
+    test.ok(result);
+    test.equal(result.unidades, 30);
+    test.equal(result.unidad, 'unidad');
+
+    var result = preciosa.analyze('40 und');
+    
+    test.ok(result);
+    test.equal(result.unidades, 40);
+    test.equal(result.unidad, 'unidad');
+
+    var result = preciosa.analyze('50u');
+    
+    test.ok(result);
+    test.equal(result.unidades, 50);
+    test.equal(result.unidad, 'unidad');
+};
+
+exports['Analyze square meters'] = function (test) {
+    var result = preciosa.analyze('10m2');
+    
+    test.ok(result);
+    test.equal(result.area, 10);
+    test.equal(result.unidad_area, 'metro cuadrado');
+
+    var result = preciosa.analyze('30 mt2');
+    
+    test.ok(result);
+    test.equal(result.area, 30);
+    test.equal(result.unidad_area, 'metro cuadrado');
+
+    var result = preciosa.analyze('40 mts2');
+    
+    test.ok(result);
+    test.equal(result.area, 40);
+    test.equal(result.unidad_area, 'metro cuadrado');
+
+};
