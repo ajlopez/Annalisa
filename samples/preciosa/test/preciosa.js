@@ -165,6 +165,12 @@ exports['Analyze units'] = function (test) {
     test.ok(result);
     test.equal(result.unidades, 50);
     test.equal(result.unidad, 'unidad');
+
+    var result = preciosa.analyze('5unid');
+    
+    test.ok(result);
+    test.equal(result.unidades, 5);
+    test.equal(result.unidad, 'unidad');
 };
 
 exports['Analyze square meters'] = function (test) {
