@@ -173,6 +173,27 @@ exports['Analyze units'] = function (test) {
     test.equal(result.unidad, 'unidad');
 };
 
+exports['Analyze watts'] = function (test) {
+    var result = preciosa.analyze('40W');
+    
+    test.ok(result);
+    test.equal(result.potencia, 40);
+    test.equal(result.unidad_potencia, 'watt');
+
+    var result = preciosa.analyze('50WTS');
+    
+    test.ok(result);
+    test.equal(result.potencia, 50);
+    test.equal(result.unidad_potencia, 'watt');
+
+    var result = preciosa.analyze('60WT');
+    
+    test.ok(result);
+    test.equal(result.potencia, 60);
+    test.equal(result.unidad_potencia, 'watt');
+
+};
+
 exports['Analyze square meters'] = function (test) {
     var result = preciosa.analyze('10m2');
     
