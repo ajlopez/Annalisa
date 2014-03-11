@@ -187,7 +187,7 @@ exports['Analyze square meters'] = function (test) {
     test.equal(result.unidad_area, 'metro cuadrado');
 
     var result = preciosa.analyze('40 mts2');
-    
+ 
     test.ok(result);
     test.equal(result.area, 40);
     test.equal(result.unidad_area, 'metro cuadrado');
@@ -205,3 +205,14 @@ exports['Analyze code'] = function (test) {
     test.equal(result.codigo, '779004058990');
 };
 
+exports['Normalize description'] = function (test) {
+    var result = preciosa.analyze('HUEVO KINDER 20GR.C/SORPRESA');
+    
+    test.ok(result);
+    test.equal(result.descripcion, 'Huevo Kinder 20 gr c/Sorpresa');
+    
+    var result = preciosa.analyze('4008410;HUEVO KINDER 20GR.C/SORPRESA;20;Gr;48;Des');
+    
+    test.ok(result);
+    test.equal(result.descripcion, 'Huevo Kinder 20 gr c/Sorpresa');
+};

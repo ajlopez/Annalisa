@@ -19,6 +19,7 @@ function initialize() {
     });
     
     anna.defineRule(codeRule);
+    anna.defineRule(descriptionRule, { raw: true });
 }
 
 function codeRule(text) {
@@ -32,6 +33,43 @@ function codeRule(text) {
             return { codigo: codes[k] };
         
     return { };
+}
+
+function descriptionRule(text) {
+    var pos = text.indexOf(';');
+    
+    if (pos >= 0)
+        text = text.substring(pos + 1);
+        
+    pos = text.indexOf(';');
+    
+    if (pos >= 0)
+        text = text.substring(0, pos);
+        
+    text = anna.normalize(text, { nodiscard: true, preserve: '/' });
+    
+    for (var k = 0; k < text.length; k++) {
+        var ch = text[k];
+        
+        if (!isLetter(ch))
+            continue;
+            
+        if (k == 0 || (!isLetter(text[k - 1]) && isLetter(text[k + 1]) && isLetter(text[k + 2]))) {
+            ch = ch.toUpperCase();
+            text = text.substring(0, k) + ch + text.substring(k + 1);
+        }
+    }
+    
+    text = text.trim();
+    
+    if (!text)
+        return { };
+    
+    return { descripcion: text };
+}
+
+function isLetter(ch) {
+    return ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z';
 }
 
 function loadRemoteMarcas(cb) {
