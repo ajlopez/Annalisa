@@ -63,6 +63,14 @@ exports['discard words'] = function (test) {
     test.equal(normalize('house of of of the cards the'), 'house cards');;
 };
 
+exports['normalize wo/discard words'] = function (test) {
+    normalize.discard('the');
+    normalize.discard('  OF ');
+    test.equal(normalize('the dog', { nodiscard: true }), 'the dog');;
+    test.equal(normalize('house of cards', { nodiscard: true }), 'house of cards');;
+    test.equal(normalize('house of of of the cards the', { nodiscard: true }), 'house of of of the cards the');;
+};
+
 exports['letters and digits'] = function (test) {
     test.equal(normalize('B2'), 'b2');
     test.equal(normalize('1lt'), '1 lt');
