@@ -55,20 +55,26 @@ exports['normalize multiple spaces'] = function (test) {
     test.equal(result, 'foo bar');
 };
 
+exports['normalize with preserve'] = function (test) {
+    test.equal(normalize('the dog', { preserve: '/' }), 'the dog');;
+    test.equal(normalize('w/dog', { preserve: '/' }), 'w/dog');;
+    test.equal(normalize('element wo/color', { preserve: './' }), 'element wo/color');
+};
+
 exports['discard words'] = function (test) {
     normalize.discard('the');
     normalize.discard('  OF ');
-    test.equal(normalize('the dog'), 'dog');;
-    test.equal(normalize('house of cards'), 'house cards');;
-    test.equal(normalize('house of of of the cards the'), 'house cards');;
+    test.equal(normalize('the dog'), 'dog');
+    test.equal(normalize('house of cards'), 'house cards');
+    test.equal(normalize('house of of of the cards the'), 'house cards');
 };
 
 exports['normalize wo/discard words'] = function (test) {
     normalize.discard('the');
     normalize.discard('  OF ');
-    test.equal(normalize('the dog', { nodiscard: true }), 'the dog');;
-    test.equal(normalize('house of cards', { nodiscard: true }), 'house of cards');;
-    test.equal(normalize('house of of of the cards the', { nodiscard: true }), 'house of of of the cards the');;
+    test.equal(normalize('the dog', { nodiscard: true }), 'the dog');
+    test.equal(normalize('house of cards', { nodiscard: true }), 'house of cards');
+    test.equal(normalize('house of of of the cards the', { nodiscard: true }), 'house of of of the cards the');
 };
 
 exports['letters and digits'] = function (test) {
