@@ -191,5 +191,17 @@ exports['Analyze square meters'] = function (test) {
     test.ok(result);
     test.equal(result.area, 40);
     test.equal(result.unidad_area, 'metro cuadrado');
-
 };
+
+exports['Analyze code'] = function (test) {
+    var result = preciosa.analyze('4008410;HUEVO KINDER 20GR.C/SORPRESA;20;Gr;48;Des');
+    
+    test.ok(result);
+    test.equal(result.codigo, '4008410');
+
+    var result = preciosa.analyze('779004058990;ARCOR CEREAL MIX 180GR.AV/GRAN;180;Gr;25;Hab');
+    
+    test.ok(result);
+    test.equal(result.codigo, '779004058990');
+};
+

@@ -17,6 +17,21 @@ function initialize() {
     reglas.forEach(function (regla) {
         anna.defineRule(regla.dato, regla.produce);
     });
+    
+    anna.defineRule(codeRule);
+}
+
+function codeRule(text) {
+    var codes = text.match(/\d+/g);
+    
+    if (!codes || !codes.length)
+        return { };
+    
+    for (var k = 0; k < codes.length; k++)
+        if (codes[k].length >= 6)
+            return { codigo: codes[k] };
+        
+    return { };
 }
 
 function loadRemoteMarcas(cb) {
